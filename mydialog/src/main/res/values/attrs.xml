@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyDemoItem">
+        <attr name="icon_tint" format="color"/>
+        <attr name="centerText" format="string"/>
+        <attr name="centerTextColor" format="color"/>
+        <attr name="bottomText" format="string"/>
+        <attr name="bottomTextColor" format="color"/>
+        <attr name="danwei" format="enum">
+            <enum name="mi" value="0"/>
+            <enum name="时" value="0"/>
+        </attr>
+        <attr name="danweiColor" format="color"/>
+    </declare-styleable>
+</resources>

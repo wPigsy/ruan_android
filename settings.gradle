@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ruan_android"
 include ':app'
+include ':mydialog'
