@@ -1,11 +1,13 @@
 package com.ruan.mydialog.uikit;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -13,7 +15,7 @@ import androidx.annotation.Nullable;
 import com.ruan.mydialog.R;
 
 public class UikitProgress extends View {
-
+    private static final String TAG = "UikitProgress";
     private float mProgressWidth;
     private float mProgressBgWidth;
     private int mProgressBgColor;
@@ -119,5 +121,11 @@ public class UikitProgress extends View {
     public void setProgress(float progress) {
         mProgressValue = progress;
         invalidate();
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        Log.d(TAG, "onConfigurationChanged() called with: newConfig = [" + newConfig + "]");
+        super.onConfigurationChanged(newConfig);
     }
 }
