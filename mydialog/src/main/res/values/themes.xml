@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Ruan_android" parent="Theme.AppCompat">
+        <!-- Primary brand color. -->
+
+        <!-- Customize your theme here. -->
+        <!-- 自定义view的默认主题 -->
+        <item name="uikit_progress_default_222">@style/uikit_progress_default2</item>
+    </style>
+
+    <style name="uikit_progress_default">
+        <item name="uikit_progress_width">20dp</item>
+        <item name="uikit_progress_bg_color">@android:color/holo_green_light</item>
+        <item name="uikit_progress_bg_width">10dp</item>
+        <item name="uikit_progress_start_color">@color/purple_500</item>
+        <item name="uikit_progress_end_color">@android:color/holo_orange_light</item>
+        <item name="uikit_progress_radius">300dp</item>
+        <item name="uikit_progress_value">0</item>
+    </style>
+
+    <style name="uikit_progress_default3">
+        <item name="uikit_progress_width">20dp</item>
+        <item name="uikit_progress_bg_color">@color/purple_500</item>
+        <item name="uikit_progress_bg_width">10dp</item>
+        <item name="uikit_progress_start_color">@color/purple_500</item>
+        <item name="uikit_progress_end_color">@color/purple_500</item>
+        <item name="uikit_progress_radius">300dp</item>
+        <item name="uikit_progress_value">0</item>
+    </style>
+
+    <style name="uikit_progress_default2">
+        <item name="uikit_progress_width">20dp</item>
+        <item name="uikit_progress_bg_color">@android:color/white</item>
+        <item name="uikit_progress_bg_width">10dp</item>
+        <item name="uikit_progress_start_color">@color/white</item>
+        <item name="uikit_progress_end_color">@android:color/white</item>
+        <item name="uikit_progress_radius">300dp</item>
+        <item name="uikit_progress_value">0</item>
+    </style>
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyDemoItem">
+        <attr name="icon_tint" format="color" />
+        <attr name="centerText" format="string" />
+        <attr name="centerTextColor" format="color" />
+        <attr name="bottomText" format="string" />
+        <attr name="bottomTextColor" format="color" />
+        <attr name="danwei" format="enum">
+            <enum name="mi" value="0" />
+            <enum name="时" value="0" />
+        </attr>
+        <attr name="danweiColor" format="color" />
+    </declare-styleable>
+
+    <!--  自定义view的属性声明  -->
+    <declare-styleable name="UikitProgress">
+        <attr name="uikit_progress_width" format="dimension" />
+        <attr name="uikit_progress_bg_color" format="color" />
+        <attr name="uikit_progress_bg_width" format="dimension" />
+        <attr name="uikit_progress_start_color" format="color" />
+        <attr name="uikit_progress_end_color" format="color" />
+        <attr name="uikit_progress_radius" format="dimension" />
+        <attr name="uikit_progress_value" format="float" />
+    </declare-styleable>
+
+    <!--  定义默认的attr  -->
+    <attr name="uikit_progress_default_222" format="reference"/>
+
+
+</resources>

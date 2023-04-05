@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyDemoStyle" parent="MyDemoStyle_day"/>
+
+    <style name="MyDemoStyle_day">
+        <item name="centerText">白天模式</item>
+        <item name="icon_tint">@color/purple_500</item>
+        <item name="centerTextColor">@color/purple_500</item>
+        <item name="bottomTextColor">@android:color/holo_green_light</item>
+        <item name="danweiColor">@android:color/holo_orange_dark</item>
+    </style>
+
+    <style name="MyDemoStyle_night">
+        <item name="centerText">黑夜模式</item>
+        <item name="icon_tint">@android:color/holo_red_dark</item>
+        <item name="centerTextColor">@color/purple_500</item>
+        <item name="bottomTextColor">@android:color/holo_green_light</item>
+        <item name="danweiColor">@android:color/holo_orange_light</item>
+    </style>
+</resources>

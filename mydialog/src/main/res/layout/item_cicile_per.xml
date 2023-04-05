@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.ruan.mydialog.CicleView
+        android:id="@+id/cicleView4"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cicleView3"
+        app:layout_constraintEnd_toEndOf="@+id/cicleView3"
+        app:layout_constraintStart_toStartOf="@+id/cicleView3"
+        app:layout_constraintTop_toTopOf="@+id/cicleView3" />
+
+    <com.ruan.mydialog.CicleView
+        android:id="@+id/cicleView3"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/cicleView3"
+        app:layout_constraintEnd_toEndOf="@+id/cicleView3"
+        app:layout_constraintStart_toStartOf="@+id/cicleView3"
+        app:layout_constraintTop_toTopOf="@+id/cicleView3">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中间文字" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中间描述" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="底部文字"
+        app:layout_constraintEnd_toEndOf="@+id/cicleView3"
+        app:layout_constraintStart_toStartOf="@+id/cicleView3"
+        app:layout_constraintTop_toBottomOf="@+id/cicleView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="底部描述"
+        app:layout_constraintEnd_toEndOf="@+id/cicleView3"
+        app:layout_constraintStart_toStartOf="@+id/cicleView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
