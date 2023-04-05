@@ -24,7 +24,9 @@ public interface IWanAndroid {
     Call<ArticleList> articleListCall(@Query("cid") int cid);
 
     @GET("article/list/0/json")
-    Observable<ArticleList> articleListCallRxjava(@Query("cid") int cid);
+    Observable<ArticleList> articleListCallRxjava(@Query("cid") long cid);
+
+
 
 
 }

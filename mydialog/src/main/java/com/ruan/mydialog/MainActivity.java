@@ -23,6 +23,7 @@ import com.ruan.request.ResponseTransformer;
 import java.util.ArrayList;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
@@ -45,9 +46,10 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 progress.setProgress(80);
 
-                standReq();
-                rxReq();
-                rxReqException();
+                //standReq();
+                //rxReq();
+                //rxReqException();
+                reMerge();
             }
         });
 
@@ -67,14 +69,56 @@ public class MainActivity extends Activity {
 
     }
 
+    private void reMerge() {
+
+        Observable<ArticleList> compose = NetworkManager.getInstance().initRetrofitRxJava()
+                .create(IWanAndroid.class)
+                .articleListCallRxjava(60)
+                .subscribeOn(Schedulers.io());
+
+        Observable<ArticleList> compose2 = NetworkManager.getInstance().initRetrofitRxJava()
+                .create(IWanAndroid.class)
+                .articleListCallRxjava(222229999999L)
+                .subscribeOn(Schedulers.io());//切换到IO线程
+
+
+        Observable.merge(compose, compose2)
+                .observeOn(AndroidSchedulers.mainThread())//切换到主线程
+                .compose(ResponseTransformer.obtain())
+                .subscribe(new Consumer<ArticleList.DataBean>() {
+                    @Override
+                    public void accept(ArticleList.DataBean dataBean) throws Throwable {
+                        Log.e(TAG, "accept: 全部请求成功" + dataBean);
+                    }
+                }, new ErrorConsumer() {
+                    @Override
+                    protected void error(ApiException e) {
+                        Log.e(TAG, "accept: 全部请求失败了鲁大师");
+                    }
+                });
+                //.subscribe(new Consumer<Object>() {
+                //    @Override
+                //    public void accept(Object o) throws Throwable {
+                //        if (o instanceof ArticleList.DataBean) {
+                //            Log.e(TAG, "accept: 全部请求成功" + o);
+                //        } else {
+                //            Log.e(TAG, "accept: " + o );
+                //        }
+                //    }
+                //}, new ErrorConsumer() {
+                //    @Override
+                //    protected void error(ApiException e) {
+                //        Log.e(TAG, "error: 请求失败" );
+                //    }
+                //});
+    }
+
     private void rxReqException() {
         NetworkManager.getInstance().initRetrofitRxJava()
                 .create(IWanAndroid.class)
-                .articleListCallRxjava(60)
+                .articleListCallRxjava(222229999999L)
                 .subscribeOn(Schedulers.io())//切换到IO线程
-
                 .observeOn(AndroidSchedulers.mainThread())//切换到主线程
-
                 .compose(ResponseTransformer.obtain())
                 .subscribe(new Consumer<ArticleList.DataBean>() {
                     @Override
