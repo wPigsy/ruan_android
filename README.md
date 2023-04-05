@@ -12,3 +12,7 @@ https://juejin.cn/post/7164593975255531557
 
 白天黑夜
 https://www.cnblogs.com/baiqiantao/p/14495880.html
+retrofit2
+https://www.jianshu.com/p/308f3c54abdd
+教程
+https://blog.csdn.net/m0_49508485/article/details/127041124

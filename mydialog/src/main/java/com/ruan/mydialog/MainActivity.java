@@ -11,9 +11,18 @@ import androidx.annotation.WorkerThread;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.ruan.mydialog.uikit.UikitProgress;
+import com.ruan.request.ArticleList;
+import com.ruan.request.IWanAndroid;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
@@ -28,6 +37,32 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 progress.setProgress(80);
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(IWanAndroid.Base_URL)
+                        .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                        .build();
+
+                IWanAndroid iWanAndroid = retrofit.create(IWanAndroid.class);
+
+
+                iWanAndroid.articleListCall(60).enqueue(new Callback<ArticleList>() {
+                    @Override
+                    public void onResponse(Call<ArticleList> call, Response<ArticleList> response) {
+                        Log.d(TAG, "onResponse() called with: call = [" + call + "], response = [" + response.body().toString() + "]");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArticleList> call, Throwable t) {
+
+                    }
+                });
+
+
+                //.articleListCall();
+
+
+
             }
         });
 
