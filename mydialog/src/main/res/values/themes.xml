@@ -4,5 +4,17 @@
         <!-- Primary brand color. -->
 
         <!-- Customize your theme here. -->
+
     </style>
+
+    <style name="uikit_progress_default">
+        <item name="uikit_progress_width">20dp</item>
+        <item name="uikit_progress_bg_color">@android:color/holo_green_light</item>
+        <item name="uikit_progress_bg_width">10dp</item>
+        <item name="uikit_progress_start_color">@color/purple_500</item>
+        <item name="uikit_progress_end_color">@android:color/holo_orange_light</item>
+        <item name="uikit_progress_radius">300dp</item>
+        <item name="uikit_progress_value">0</item>
+    </style>
+
 </resources>
