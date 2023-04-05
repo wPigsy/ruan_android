@@ -38,6 +38,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1' // 必要依赖，解析json字符
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0' //非必要依赖，打印日志
 
+
+    implementation "io.reactivex.rxjava3:rxjava:3.1.6" // 必要rxjava依赖
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.2" // 必要rxandrroid依赖，切线程时需要用到
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0' // 必要依赖，和rxjava结合必须用到
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

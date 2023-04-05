@@ -13,11 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.ruan.mydialog.uikit.UikitProgress;
+import com.ruan.request.ApiException;
 import com.ruan.request.ArticleList;
+import com.ruan.request.ErrorConsumer;
 import com.ruan.request.IWanAndroid;
+import com.ruan.request.NetworkManager;
+import com.ruan.request.ResponseTransformer;
 
 import java.util.ArrayList;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,31 +45,9 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 progress.setProgress(80);
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(IWanAndroid.Base_URL)
-                        .addConverterFactory(GsonConverterFactory.create(new Gson()))
-                        .build();
-
-                IWanAndroid iWanAndroid = retrofit.create(IWanAndroid.class);
-
-
-                iWanAndroid.articleListCall(60).enqueue(new Callback<ArticleList>() {
-                    @Override
-                    public void onResponse(Call<ArticleList> call, Response<ArticleList> response) {
-                        Log.d(TAG, "onResponse() called with: call = [" + call + "], response = [" + response.body().toString() + "]");
-                    }
-
-                    @Override
-                    public void onFailure(Call<ArticleList> call, Throwable t) {
-
-                    }
-                });
-
-
-                //.articleListCall();
-
-
-
+                standReq();
+                rxReq();
+                rxReqException();
             }
         });
 
@@ -80,6 +65,67 @@ public class MainActivity extends Activity {
         viewById1.setAdapter(new DemoAdapter(objects));
 
 
+    }
+
+    private void rxReqException() {
+        NetworkManager.getInstance().initRetrofitRxJava()
+                .create(IWanAndroid.class)
+                .articleListCallRxjava(60)
+                .subscribeOn(Schedulers.io())//切换到IO线程
+
+                .observeOn(AndroidSchedulers.mainThread())//切换到主线程
+
+                .compose(ResponseTransformer.obtain())
+                .subscribe(new Consumer<ArticleList.DataBean>() {
+                    @Override
+                    public void accept(ArticleList.DataBean dataBean) throws Throwable {
+                        Log.d(TAG, "rxReqException() called with: dataBean = [" + dataBean + "]");
+                    }
+                }, new ErrorConsumer() {
+                    @Override
+                    protected void error(ApiException e) {
+                        Log.e(TAG, "rxReqException: ",  e );
+                    }
+                });
+    }
+
+    private void rxReq() {
+        NetworkManager.getInstance().initRetrofitRxJava()
+                .create(IWanAndroid.class)
+                .articleListCallRxjava(60)
+                .subscribeOn(Schedulers.io())//切换到IO线程
+
+                .observeOn(AndroidSchedulers.mainThread())//切换到主线程
+
+                .subscribe(listResponseData -> {
+                    //请求成功
+                    Log.e(TAG, "rxReq: " + listResponseData.toString() );
+                }, throwable -> {
+                    //请求失败
+                    Log.e(TAG, "rxReq: error " );
+
+                });
+    }
+
+    private void standReq() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(IWanAndroid.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .build();
+
+        IWanAndroid iWanAndroid = retrofit.create(IWanAndroid.class);
+
+        iWanAndroid.articleListCall(60).enqueue(new Callback<ArticleList>() {
+            @Override
+            public void onResponse(Call<ArticleList> call, Response<ArticleList> response) {
+                Log.d(TAG, "onResponse() called with: call = [" + call + "], response = [" + response.body().toString() + "]");
+            }
+
+            @Override
+            public void onFailure(Call<ArticleList> call, Throwable t) {
+
+            }
+        });
     }
 
     @WorkerThread

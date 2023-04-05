@@ -2,7 +2,7 @@ package com.ruan.request;
 
 import java.util.List;
 
-public class ArticleList {
+public class ArticleList extends ResponseData<ArticleList.DataBean>{
     @Override
     public String toString() {
         return "ArticleList{" +
@@ -175,6 +175,20 @@ public class ArticleList {
     }
 
     public static class DataBean {
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "curPage=" + curPage +
+                    ", offset=" + offset +
+                    ", over=" + over +
+                    ", pageCount=" + pageCount +
+                    ", size=" + size +
+                    ", total=" + total +
+                    ", datas=" + datas +
+                    '}';
+        }
+
         /**
          * curPage : 1
          * datas : [{"adminAdd":false,"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":60,
