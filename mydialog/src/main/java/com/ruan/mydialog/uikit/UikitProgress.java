@@ -33,11 +33,11 @@ public class UikitProgress extends View {
     }
 
     public UikitProgress(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, R.attr.uikit_progress_default_222);
     }
 
     public UikitProgress(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, R.style.uikit_progress_default);
+        this(context, attrs, defStyleAttr, R.style.uikit_progress_default3);
     }
 
     public UikitProgress(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
